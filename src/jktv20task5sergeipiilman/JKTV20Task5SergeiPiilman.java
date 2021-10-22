@@ -18,52 +18,61 @@ public class JKTV20Task5SergeiPiilman {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+       
+        int[][] array = new int [5][];
         Random random = new Random();
-        int a = 50;
-        int b = 100;
-        int[][] arrayPro = new int[5][];
-        arrayPro[0] = new int[3];
-        arrayPro[1] = new int[5];
-        arrayPro[2] = new int[7];
-        arrayPro[3] = new int[8];
-        arrayPro[4] = new int[9];
-        for(int i = 0; i < arrayPro.length; i++){
-            for(int j = 0; j < arrayPro[i].length; j++){
-                arrayPro[i][j] = ((int)(Math.random() * 50)+50);
+        array[0] = new int[3];
+        array[1] = new int[5];
+        array[2] = new int[7];
+        array[3] = new int[8];
+        array[4] = new int[9];
+        for (int i = 0; i < 5; i++){
+            switch (i) {
+     
+            }
+          
+        }
+        
+        for(int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[i].length; j++){
+                array[i][j] = random.nextInt(100 - 50 + 1) + 50;
             }
         }
-        //вывод несортированного зубчатого массива
-        System.out.println("ArrayPro(unsorted) = ");
-        for(int i = 0; i < arrayPro.length; i++){
-            System.out.print(Arrays.toString(arrayPro[i]));
-            System.out.println();
+        
+        for(int i = 0; i < array.length; i++){
+            System.out.println(Arrays.toString(array[i]));
         }
-        //вывод сортированного зубчатого массива
-        boolean isSorted = false;
-        int buf;
-        while (!isSorted) {            
-            isSorted = true;
-            for (int i = 0; i < arrayPro.length-1; i++) {
-                for(int j = 0; j < arrayPro[i].length-1; j++){
-                    if(arrayPro[i][j] > arrayPro[i][j+1]){
-                        isSorted = false;
-                        buf = arrayPro[i][j];
-                        arrayPro[i][j] = arrayPro[i][j+1];
-                        arrayPro[i][j+1] = buf;
-                    }  
+        
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                
+                for(int k = 0; k<array.length;k++){
+                    for (int m = 0; m < array[k].length; m++) {
+                        
+                       if(array[i][j]<array[k][m]){
+                            array[i][j]=array[i][j] + array[k][m];
+                            array[k][m]=array[i][j] - array[k][m];
+                            array[i][j] = array[i][j] - array[k][m];
+                        }
+                        
+                    }
+                    
                 }
+                    
             }
         }
-        System.out.println("ArrayPro(sorted) = ");
-        for(int i = 0; i < arrayPro.length; i++){
-                System.out.print("[");
-            for(int j = 0; j < arrayPro[i].length; j++){
-                System.out.print(arrayPro[i][j]);
-                System.out.print(", ");
+        
+        System.out.println("сортировка:");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print("[");
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.printf(array[i][j]+", ");
             }
             System.out.print("]");
             System.out.println();
+            
         }
-        
     }
+    
 }
